@@ -26,8 +26,8 @@ const bookSchema = new Schema(
       trim: true,
     },
     isFavorite: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
   },
   {
