@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        const db = await mongoose.connect("mongodb://localhost/middas", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        const db = await mongoose.connect("mongodb://localhost/middasDB", {
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true,
         });
         console.log(`Conectado a MongoDB: ${db.connection.db.databaseName}`);
     } catch (error) {

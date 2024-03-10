@@ -1,15 +1,12 @@
-const express = require("express");
+const app = require("./app");
 const connectDB = require("./db");
 
-const app = express();
 const PORT = 3001;
 
-connectDB();
-
-app.get("/api/home", (req, res)=> {
-    res.json({message: "Hola Middas!"});
-});
-
-app.listen(PORT, () => {
-    console.log(`Server iniciado en puerto ${PORT}`)
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server iniciado en puerto ${PORT}`);
+    });
+}).catch(err => {
+    console.error('Error al iniciar el servidor:', err);
 });
