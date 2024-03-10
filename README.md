@@ -1,6 +1,8 @@
 <h1 align="center"><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35">Hola Equipo, bienvenidos a mi prueba técnica </h1>
 <p>En este repositorio vas a encontrar la solución de mi prueba</p>
 
+<p>En la carpeta "client" se encuentra el Frontend y en la carpeta "server" se encuentra el Backend</p>
+
 ## Paso a paso para iniciar el proyecto
 
 1) Cloná el repositorio usando el siguiente comando: git clone https://github.com/MercedesPoisson/middas-mercedespoisson.git
