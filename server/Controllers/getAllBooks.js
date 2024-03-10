@@ -1,4 +1,3 @@
-const connectDB = require("../db");
 const Book = require("../models/book");
 
 const getAllBooks = async (req, res) => {
