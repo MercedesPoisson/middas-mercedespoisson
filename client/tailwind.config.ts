@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         middasgreen: "#15B287",
+        middasdarkgreen: "#08745C",
         middasyellow: "#FDCD72",
         middasgray: "#F6F6F6",
         middasblue: "#2563EB",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "tailwindcss/tailwind.css";
-import Header from "@/app/ui/header";
+// import Header from "./ui/header";
+import { poppins } from "./ui/fonts";
+import NavBar from "./ui/navBar";
 
 export const metadata: Metadata = {
   title: "Middas - Mercedes Poisson",
@@ -13,26 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+      <div className="w-full flex-none md:w-64">
+        <NavBar />
+      </div>
+
+      {/* <Header /> */}
+      <div className="grow p-6 md:overflow-y-auto md:p-12">{children}</div>
+    </div>
   );
 }
-
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="en" className="flex flex-col h-screen">
-//       <Header />
-//       <div className="flex-grow overflow-y-auto">
-//         <div className="w-full mx-4 sm:mx-auto">
-//           <body>{children}</body>
-//         </div>
-//       </div>
-//     </html>
-//   );
-// }
