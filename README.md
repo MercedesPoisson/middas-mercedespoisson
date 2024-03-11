@@ -5,7 +5,8 @@
 
 ## Paso a paso para iniciar el proyecto
 
-1) Cloná el repositorio usando el siguiente comando: git clone https://github.com/MercedesPoisson/middas-mercedespoisson.git
+1) Cloná el repositorio usando el siguiente comando: 
+git clone https://github.com/MercedesPoisson/middas-mercedespoisson.git
 2) Abrí una terminal en "la ubicacion de tu carpeta/middas-mercedespoisson/server"
 3) Instalá las dependencias con el comando npm install
 4) Iniciá el servidor: npm run dev
