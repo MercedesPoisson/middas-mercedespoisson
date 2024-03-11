@@ -6,10 +6,14 @@
 ## Paso a paso para iniciar el proyecto
 
 1) Cloná el repositorio usando el siguiente comando: git clone https://github.com/MercedesPoisson/middas-mercedespoisson.git
-2) Instalá las dependencias: npm install
-3) Iniciá el servidor: npm run dev
+2) Abrí una terminal en "la ubicacion de tu carpeta/middas-mercedespoisson/server"
+3) Instalá las dependencias con el comando npm install
+4) Iniciá el servidor: npm run dev
+5) Abrí otra terminal en "laubicacion de tu carpeta/middas-mercedespoisson/client"
+6) Instalá las dependencias con el comando npm install
+7) Iniciá con el comando: npm run dev
 
-Esto va a iniciar el servidor en el puerto "http://localhost:3000". Si no se abrió automáticamente podés tipear esta URL en tu navegador.
+Esto va a iniciar el proyecto en el puerto "http://localhost:3000". Si no se abrió automáticamente podés tipear esta URL en tu navegador.
 
 ## Stack
 ![TypeScript](https://img.shields.io/badge/-TypeScript-05122A?style=flat&logo=typescript)&nbsp;
