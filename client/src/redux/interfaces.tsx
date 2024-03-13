@@ -1,6 +1,6 @@
 
 export interface Book {
-    id: string,
+    _id: string,
     title: string,
     author: string,
     year: string,
@@ -26,7 +26,7 @@ export interface newBook {
 }
 
 export interface Favorite {
-    id: string,
+    _id: string,
     title: string,
     author: string,
     year: string,

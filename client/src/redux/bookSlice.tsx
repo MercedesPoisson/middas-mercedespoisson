@@ -61,7 +61,20 @@ export const fetchAllFavorites = createAsyncThunk(
       const response = await axios.get("http://localhost:3001/books/fav");
       return response.data;
     } catch (error) {
-      console.log("Error al obtener los libros", error);
+      console.log("Error al obtener los libros favoritos", error);
+      throw error;
+    }
+  }
+)
+
+export const toggleFavoriteStatus = createAsyncThunk(
+  "fav/toggleFavoriteStatus",
+  async (id: string) => {
+    try {
+      const response = await axios.put(`http://localhost:3001/books/fav/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log("Error al cambiar el estado de favorito: ", error);
       throw error;
     }
   }
@@ -109,7 +122,22 @@ const bookSlice = createSlice({
         state.loading = "failed";
         state.error = action.error.message;
       })
-      
+      .addCase(toggleFavoriteStatus.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(toggleFavoriteStatus.fulfilled, (state, action: PayloadAction<any>) => {
+        state.loading = "succeded";
+        const {updatedBook, message} = action.payload;
+        const updatedIndex = state.books.findIndex(book => book._id === updatedBook);
+        if (updatedIndex !== -1) {
+          state.books[updatedIndex] = updatedBook;
+          console.log(message);
+        }
+      })
+      .addCase(toggleFavoriteStatus.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.error.message;
+      });
   },
 });
 

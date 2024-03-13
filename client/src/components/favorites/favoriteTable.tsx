@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Favorite } from "../../redux/interfaces";
-import { FaHeart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa6";
+// import { FaHeart } from "react-icons/fa";
+// import { FaRegHeart } from "react-icons/fa6";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import HeartFavorite from "./heartFavorite";
+
 
 const FavoriteTable = () => {
     const favorites = useSelector((state: RootState) => state.book.favorites);
+    
   return (
     <div className="rounded-sm mt-3 ">
       <table className="w-full text-notblack">
@@ -24,7 +27,7 @@ const FavoriteTable = () => {
         <tbody>
           {favorites.map((fav: Favorite, index: number) => (
             <tr
-              key={fav.id}
+              key={fav._id}
               className="h-10 border-b border-gray-200 hover:bg-middasgray "
             >
               <td>{index + 1}</td>
@@ -33,7 +36,7 @@ const FavoriteTable = () => {
               <td>{fav.year}</td>
               <td>{fav.genre}</td>
               <td className="text-middasgreen text-xl flex justify-center items-center mt-2">
-                {fav.isFavorite ? <FaHeart /> : <FaRegHeart />}
+              <HeartFavorite isFavorite={fav.isFavorite} bookId={fav._id} />
               </td>
               <td className="text-xl text-middasdarkgreen cursor-pointer ">
                 <HiOutlineDotsHorizontal className="border rounded-md border-middasgreen p-1" />

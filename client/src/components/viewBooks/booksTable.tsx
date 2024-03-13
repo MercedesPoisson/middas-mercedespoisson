@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Book } from "../../redux/interfaces";
-import { FaHeart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa6";
+// import { FaHeart } from "react-icons/fa";
+// import { FaRegHeart } from "react-icons/fa6";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import HeartFavorite from "../favorites/heartFavorite";
 
 const BooksTable = () => {
   const books = useSelector((state: RootState) => state.book.books);
@@ -22,24 +23,27 @@ const BooksTable = () => {
           </tr>
         </thead>
         <tbody>
-          {books.map((book: Book, index: number) => (
-            <tr
-              key={book.id}
-              className="h-10 border-b border-gray-200 hover:bg-middasgray "
-            >
-              <td>{index + 1}</td>
-              <td>{book.title}</td>
-              <td className="italic">{book.author}</td>
-              <td>{book.year}</td>
-              <td>{book.genre}</td>
-              <td className="text-middasgreen text-xl flex justify-center items-center mt-2">
-                {book.isFavorite ? <FaHeart /> : <FaRegHeart />}
-              </td>
-              <td className="text-xl text-middasdarkgreen cursor-pointer ">
+        {books.map((book: Book, index: number) => {
+    console.log("este es toda la data:", book);
+    return (
+        <tr
+            key={book._id}
+            className="h-10 border-b border-gray-200 hover:bg-middasgray"
+        >
+            <td>{index + 1}</td>
+            <td>{book.title}</td>
+            <td className="italic">{book.author}</td>
+            <td>{book.year}</td>
+            <td>{book.genre}</td>
+            <td className="text-middasgreen text-xl flex justify-center items-center mt-2">
+                <HeartFavorite isFavorite={book.isFavorite} bookId={book._id} />
+            </td>
+            <td className="text-xl text-middasdarkgreen cursor-pointer ">
                 <HiOutlineDotsHorizontal className="border rounded-md border-middasgreen p-1" />
-              </td>
-            </tr>
-          ))}
+            </td>
+        </tr>
+    );
+})}
         </tbody>
       </table>
     </div>
