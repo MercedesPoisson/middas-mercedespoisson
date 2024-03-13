@@ -17,3 +17,10 @@ export interface Action {
     type: string,
     payload: any
 }
+
+export interface newBook {
+    title: string,
+    author: string,
+    year: string,
+    genre: string,
+}
