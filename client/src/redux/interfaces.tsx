@@ -24,3 +24,12 @@ export interface newBook {
     year: string,
     genre: string,
 }
+
+export interface Favorite {
+    id: string,
+    title: string,
+    author: string,
+    year: string,
+    genre: string,
+    isFavorite: boolean
+}

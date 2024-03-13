@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Book, newBook } from "./interfaces";
+import { Book, newBook, Favorite } from "./interfaces";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -8,12 +8,14 @@ interface BooksState {
   books: Book[];
   loading: string;
   error: any;
+  favorites: Favorite[];
 }
 
 const initialState: BooksState = {
   books: [],
   loading: "idle",
   error: null,
+  favorites: []
 };
 
 export const fetchAllBooks = createAsyncThunk(
@@ -52,6 +54,19 @@ export const createBook = createAsyncThunk(
   }
 );
 
+export const fetchAllFavorites = createAsyncThunk(
+  "fav/fetchAllFavorites",
+  async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/books/fav");
+      return response.data;
+    } catch (error) {
+      console.log("Error al obtener los libros", error);
+      throw error;
+    }
+  }
+)
+
 const bookSlice = createSlice({
   name: "books",
   initialState,
@@ -66,8 +81,7 @@ const bookSlice = createSlice({
         (state, action: PayloadAction<Book[]>) => {
           state.loading = "succeded";
           state.books = action.payload;
-        }
-      )
+        })
       .addCase(fetchAllBooks.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message;
@@ -82,7 +96,20 @@ const bookSlice = createSlice({
       .addCase(createBook.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message;
-      });
+      })
+      .addCase(fetchAllFavorites.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(fetchAllFavorites.fulfilled, 
+        (state, action: PayloadAction<Favorite[]>) => {
+        state.loading = "succeded";
+        state.favorites = action.payload
+      })
+      .addCase(fetchAllFavorites.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.error.message;
+      })
+      
   },
 });
 
