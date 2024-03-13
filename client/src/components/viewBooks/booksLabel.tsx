@@ -13,7 +13,7 @@ const BooksLabel = () => {
         <div key={book.id} className="border p-4">
           <div className="flex items-center justify-between mb-2">
             <h3 className="font-bold">{book.title}</h3>  
-            <HiOutlineDotsHorizontal className="text-xl text-middasdarkgreen cursor-pointer"/>
+            <HiOutlineDotsHorizontal className="text-xl text-middasdarkgreen cursor-pointer border rounded-md border-middasgreen p-1"/>
           </div>
 
           <p className="italic">{book.author}</p>

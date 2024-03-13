@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 interface ButtonProps {
   children: ReactNode;
   icon?: "plus" | "arrow-back" | "check";
+  to: string;
 }
 
-const Button = ({ children, icon }: ButtonProps) => {
+const Button = ({ children, icon, to }: ButtonProps) => {
   const renderIcon = () => {
     switch (icon) {
       case "plus":
@@ -25,7 +26,7 @@ const Button = ({ children, icon }: ButtonProps) => {
 
   return (
     <Link
-      to="/crear"
+      to={to}
       className="inline-flex bg-middasdarkgreen text-notwhite px-4 py-2 rounded hover:bg-middasgreen focus:outline-none focus:bg-middasgreen-600 transition duration-150 ease-in-out items-center justify-center"
     >
       <span className="hidden md:block text-base font-bold uppercase">{children}</span>{" "}

@@ -35,8 +35,8 @@ const BooksTable = () => {
               <td className="text-middasgreen text-xl flex justify-center items-center mt-2">
                 {book.isFavorite ? <FaHeart /> : <FaRegHeart />}
               </td>
-              <td className="text-xl text-middasdarkgreen cursor-pointer">
-                <HiOutlineDotsHorizontal />
+              <td className="text-xl text-middasdarkgreen cursor-pointer ">
+                <HiOutlineDotsHorizontal className="border rounded-md border-middasgreen p-1" />
               </td>
             </tr>
           ))}

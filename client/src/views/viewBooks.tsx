@@ -25,7 +25,7 @@ const ViewBooks = () => {
   return (
     <div className="text-notblack font-poppins">
       <Header>{"Listado de Libros"}</Header>
-      <Button icon="plus">{"crear Libro"}</Button>
+      <Button icon="plus" to="/crear">{"crear Libro"}</Button>
       <Description>
         {
           "Busca el libro que estas necesitando, si no está, hace click en el botón crear libro y agregalo a la colección."
