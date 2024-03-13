@@ -16,13 +16,11 @@ const ViewBooks = () => {
         dispatch(fetchAllBooks() as any); 
       }, [dispatch]);
 
-    console.log(books)
-
     return (
         <div className="text-notblack font-poppins">
-            <Header>{"Detalle de Libros existentes"}</Header>
-            <Button>{"crear Libro"}</Button>
-            <Description>{"Busca el libro que estas necesitando, si no esta hace click en el botón crear libro y agregalo"}</Description>
+            <Header>{"Listado de Libros"}</Header>
+            <Button icon="plus">{"crear Libro"}</Button>
+            <Description>{"Busca el libro que estas necesitando, si no está, hace click en el botón crear libro y agregalo a la colección."}</Description>
         <ul>
         {books.map((book: Book) => ( 
           <li key={book.id}>

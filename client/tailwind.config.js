@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       colors: {
         middasgreen: "#15B287",
+        middasgreenmid: "#16B187",
         middasdarkgreen: "#08745C",
         middassoftgreen: "#EDFCF6",
         middasyellow: "#FDCD72",
