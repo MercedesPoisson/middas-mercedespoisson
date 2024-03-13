@@ -11,6 +11,9 @@ interface ButtonProps {
 }
 
 const Button = ({ children, icon, to }: ButtonProps) => {
+  const handleGoBack = () => {
+    window.history.back();
+  }
   const renderIcon = () => {
     switch (icon) {
       case "plus":
@@ -26,7 +29,8 @@ const Button = ({ children, icon, to }: ButtonProps) => {
 
   return (
     <Link
-      to={to}
+      to={to || "#"}
+      onClick={icon === "arrow-back" ? handleGoBack : undefined}
       className="inline-flex bg-middasdarkgreen text-notwhite px-4 py-2 rounded hover:bg-middasgreen focus:outline-none focus:bg-middasgreen-600 transition duration-150 ease-in-out items-center justify-center"
     >
       <span className="hidden md:block text-base font-bold uppercase">{children}</span>{" "}
