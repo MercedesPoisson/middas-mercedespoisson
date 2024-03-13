@@ -35,6 +35,7 @@ const Button = ({ children, icon, to, type, onClick }: ButtonProps) => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const buttonType = type || (icon === "arrow-back" ? "button" : "submit");
 
   const clickHandler = onClick || (icon === "arrow-back" ? handleGoBack : undefined);
