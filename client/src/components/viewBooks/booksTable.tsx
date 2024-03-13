@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Book } from "../../redux/interfaces";
-// import { FaHeart } from "react-icons/fa";
-// import { FaRegHeart } from "react-icons/fa6";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { FaRegTrashAlt } from "react-icons/fa";
 import HeartFavorite from "../favorites/heartFavorite";
+import DeleteBook from "../createBooks/deleteBook";
+
 
 const BooksTable = () => {
   const books = useSelector((state: RootState) => state.book.books);
@@ -18,7 +18,8 @@ const BooksTable = () => {
             <th style={{ width: "15%" }}>Autor</th>
             <th style={{ width: "10%" }}>Año</th>
             <th style={{ width: "15%" }}>Genero</th>
-            <th style={{ width: "15%" }}>Favorito</th>
+            <th style={{ width: "15%" }}></th>
+            <th style={{ width: "10%" }}></th>
             <th style={{ width: "10%" }}></th>
           </tr>
         </thead>
@@ -38,8 +39,11 @@ const BooksTable = () => {
             <td className="text-middasgreen text-xl flex justify-center items-center mt-2">
                 <HeartFavorite isFavorite={book.isFavorite} bookId={book._id} />
             </td>
-            <td className="text-xl text-middasdarkgreen cursor-pointer ">
-                <HiOutlineDotsHorizontal className="border rounded-md border-middasgreen p-1" />
+            <td className="cursor-pointer ">
+            <DeleteBook bookId={book._id} />
+            </td>
+            <td>
+              
             </td>
         </tr>
     );

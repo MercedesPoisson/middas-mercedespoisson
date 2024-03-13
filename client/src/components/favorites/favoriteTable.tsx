@@ -1,9 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Favorite } from "../../redux/interfaces";
-// import { FaHeart } from "react-icons/fa";
-// import { FaRegHeart } from "react-icons/fa6";
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import DeleteBook from "../createBooks/deleteBook";
 import HeartFavorite from "./heartFavorite";
 
 
@@ -39,7 +37,7 @@ const FavoriteTable = () => {
               <HeartFavorite isFavorite={fav.isFavorite} bookId={fav._id} />
               </td>
               <td className="text-xl text-middasdarkgreen cursor-pointer ">
-                <HiOutlineDotsHorizontal className="border rounded-md border-middasgreen p-1" />
+              <DeleteBook bookId={fav._id} />
               </td>
             </tr>
           ))}

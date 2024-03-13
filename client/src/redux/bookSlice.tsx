@@ -80,6 +80,19 @@ export const toggleFavoriteStatus = createAsyncThunk(
   }
 )
 
+export const deleteBook = createAsyncThunk(
+  "del/deleteBook",
+  async (id: string) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/books/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log("Error al eliminar el libro: ", error);
+      throw error;      
+    }
+  }
+)
+
 const bookSlice = createSlice({
   name: "books",
   initialState,
@@ -137,7 +150,17 @@ const bookSlice = createSlice({
       .addCase(toggleFavoriteStatus.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message;
-      });
+      })
+      .addCase(deleteBook.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(deleteBook.fulfilled, (state, action) => {
+        state.loading = "deleted";
+      })
+      .addCase(deleteBook.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.error.message
+      })
   },
 });
 
