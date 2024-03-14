@@ -3,6 +3,7 @@ import { RootState } from "../../redux/store";
 import { Book } from "../../redux/interfaces";
 import DeleteBook from "../deleteBook/deleteBook";
 import HeartFavorite from "../favorites/heartFavorite";
+import UpdateButton from "../updateBooks/updateButton";
 
 
 const BooksLabel = () => {
@@ -20,9 +21,10 @@ const BooksLabel = () => {
           <p className="italic">{book.author}</p>
           <p>Año: {book.year}</p>
           <p>Género: {book.genre}</p>
-          <p className="text-middasgreen text-xl">
+          <div className="flex items-center space-x-2">
+          <UpdateButton bookId={book._id} />
           <DeleteBook bookId={book._id} />
-          </p>
+          </div>
         </div>
       ))}
     </div>

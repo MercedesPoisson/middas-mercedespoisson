@@ -26,7 +26,6 @@ const BooksTable = () => {
         </thead>
         <tbody>
           {books.map((book: Book, index: number) => {
-            console.log("este es toda la data:", book);
             return (
               <tr
                 key={book._id}

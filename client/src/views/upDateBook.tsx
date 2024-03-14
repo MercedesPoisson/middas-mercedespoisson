@@ -28,7 +28,6 @@ const UpdateBook = () => {
   useEffect(() => {
     if (id) {
       dispatch(fetchBookById(id) as any);
-      console.log("valor del id: ", id);
     }
   }, [dispatch, id]);
 
@@ -72,9 +71,7 @@ const UpdateBook = () => {
       genre: updateBookData.genre,
     };
     if (id) {
-      dispatch(
-        updateBook(updateBook({ id, fields: updatedFields }) as any) as any
-      )
+        dispatch(updateBook({ id, fields: updatedFields }) as any)
         .then((result: any) => {
           //manejo la actualizacion de estado
         })

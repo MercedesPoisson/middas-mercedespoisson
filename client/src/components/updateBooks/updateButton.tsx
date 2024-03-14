@@ -7,9 +7,9 @@ const UpdateButton = ({ bookId }: { bookId: string }) => {
     };
     
     return (
-        <div onClick={handleUpdateClick}>
+        <span onClick={handleUpdateClick}>
             <FaEdit className="text-2xl text-middasdarkgreen cursor-pointer p-1" />   
-        </div>
+        </span>
     );    
 }
 
