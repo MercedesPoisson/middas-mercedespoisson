@@ -12,7 +12,7 @@ git clone https://github.com/MercedesPoisson/middas-mercedespoisson.git
 4) Iniciá el servidor: npm run dev
 5) Abrí otra terminal en "laubicacion de tu carpeta/middas-mercedespoisson/client"
 6) Instalá las dependencias con el comando npm install
-7) Iniciá con el comando: npm run dev
+7) Iniciá con el comando: npm start
 
 Se debería iniciar el proyecto en el puerto "http://localhost:3000". Si no se abrió automáticamente podés copiar esta URL en tu navegador.
 El servidor esta seteado para correr en el puerto 3001.
