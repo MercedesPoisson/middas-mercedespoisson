@@ -8,7 +8,7 @@ import SelectGenre from "../components/createBooks/selectGenre";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-import { updateBook, fetchBookById } from "../redux/bookSlice";
+import { updateBook, fetchBookById, fetchAllBooks } from "../redux/bookSlice";
 import { UpdateBookInterface } from "../redux/interfaces";
 import { useParams } from "react-router-dom";
 
@@ -60,7 +60,7 @@ const UpdateBook = () => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     //validaciones para mañana
@@ -71,7 +71,8 @@ const UpdateBook = () => {
       genre: updateBookData.genre,
     };
     if (id) {
-        dispatch(updateBook({ id, fields: updatedFields }) as any)
+        await dispatch(updateBook({ id, fields: updatedFields }) as any)
+        dispatch(fetchAllBooks() as any)
         .then((result: any) => {
           //manejo la actualizacion de estado
         })
@@ -104,7 +105,7 @@ const UpdateBook = () => {
               <InputNames>{"Autor"}</InputNames>
               <Input
                 placeholder={"ingresa el autor"}
-                name={"Author"}
+                name={"author"}
                 value={updateBookData.author || ""}
                 onChange={handleInputChange}
               />

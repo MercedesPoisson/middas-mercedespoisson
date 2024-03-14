@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchAllBooks } from "../redux/bookSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { Book } from "../redux/interfaces";
-import { RootState } from "../redux/store";
+import { useDispatch } from "react-redux";
 import withLayout from "../components/ui/withLayout";
 import Button from "../components/ui/button";
 import Header from "../components/ui/header";
@@ -16,7 +14,6 @@ const ViewBooks = () => {
   const [viewType, setViewType] = useState("table");
 
   const dispatch = useDispatch();
-  // const books = useSelector((state: RootState) => state.book.books)
 
   useEffect(() => {
     dispatch(fetchAllBooks() as any);
