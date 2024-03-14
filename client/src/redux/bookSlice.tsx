@@ -95,19 +95,27 @@ export const deleteBook = createAsyncThunk(
 
 export const updateBook = createAsyncThunk(
   "upd/updateBook",
-  async ({ id, book }: { id: string, book: Book }) => {
+  async ({ id, fields }: { id: string, fields: Partial<Book> }) => {
     try {
-      const bookData = {
-        title: book.title,
-        author: book.author,
-        year: book.year,
-        genre: book.genre
-      } 
-      const response = await axios.put(`http://localhost:3001/books/${id}`, bookData);
+      const response = await axios.put(`http://localhost:3001/books/${id}`, fields);
       console.log("Libro actualizado con exito: ", response.data);
       return response.data;
     } catch (error) {
       console.log("Error al actualizar el libro", error);
+      throw error;            
+    }
+  }
+)
+
+export const fetchBookById = createAsyncThunk(
+  "book/fetchBookById",
+  async (_id: any) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/books/${_id}`);
+      console.log("Libro encontrado", response.data);
+      return response.data      
+    } catch (error) {
+      console.log("Error al buscar el libro", error);
       throw error;            
     }
   }
@@ -188,6 +196,17 @@ const bookSlice = createSlice({
         state.loading = "updated";
       })
       .addCase(updateBook.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchBookById.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(fetchBookById.fulfilled, (state, action: PayloadAction<Book>) => {
+        state.loading = "succeded";
+        state.books.push(action.payload);
+      })
+      .addCase(fetchBookById.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message;
       })

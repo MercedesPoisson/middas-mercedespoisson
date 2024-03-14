@@ -141,14 +141,13 @@ const CreateBook = () => {
             />
             {validationErrors.year && <span className="text-red-500 min-h-5">{validationErrors.year}</span>}
           </div>
-          <div className="mb-10">
+          <div >
             <InputNames>{"Genero"}</InputNames>
             <SelectGenre value={newBook.genre} onChange={handleSelectChange} />
             {validationErrors.genre && (
               <span className="text-red-500 min-h-5">{validationErrors.genre}</span>
             )}
           </div>
-
           <div className="mt-4">
             <Button icon={"check"} type="button" onClick={handleSubmit}>
               {"confirmar"}

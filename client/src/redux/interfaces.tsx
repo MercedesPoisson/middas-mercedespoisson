@@ -33,3 +33,12 @@ export interface Favorite {
     genre: string,
     isFavorite: boolean
 }
+
+export interface UpdateBookInterface {
+    _id: string,
+    title: string,
+    author: string,
+    year: string,
+    genre: string,
+    isFavorite: boolean
+}
