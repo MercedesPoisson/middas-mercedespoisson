@@ -22,7 +22,7 @@ const DeleteBook = ({ bookId }: { bookId: string }) => {
 
   return (
     <div onClick={handleClick}>
-      <FaRegTrashAlt className="text-2xl text-middasdarkgreen cursor-pointer p-1" />
+      <FaRegTrashAlt className="text-2xl text-middasnotblack cursor-pointer p-1" />
     </div>
   );
 };

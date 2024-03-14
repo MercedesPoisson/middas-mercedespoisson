@@ -2,11 +2,12 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import "tailwindcss/tailwind.css"; 
 import Home from './views/home';
-// import Inicio from './views/inicio';
 import CreateBook from './views/createBook';
 import Favorites from './views/favorites';
 import ViewBooks from './views/viewBooks';
 import NavBar from './components/ui/navBar';
+import DetailBook from './views/detailBook';
+import UpdateBook from './views/upDateBook';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route index element={<ViewBooks />} />
         <Route path="/crear" element={<CreateBook />} />
         <Route path="/favoritos" element={<Favorites />} />
-        {/* <Route path="/libros" element={<ViewBooks />} /> */}
+        <Route path="/libros/:id" element={<DetailBook />} />
+        <Route path="/libro/:id" element={<UpdateBook />} />
         <Route path="/nav" element={<NavBar/>} />
       </Routes>
     </div>

@@ -93,6 +93,26 @@ export const deleteBook = createAsyncThunk(
   }
 )
 
+export const updateBook = createAsyncThunk(
+  "upd/updateBook",
+  async ({ id, book }: { id: string, book: Book }) => {
+    try {
+      const bookData = {
+        title: book.title,
+        author: book.author,
+        year: book.year,
+        genre: book.genre
+      } 
+      const response = await axios.put(`http://localhost:3001/books/${id}`, bookData);
+      console.log("Libro actualizado con exito: ", response.data);
+      return response.data;
+    } catch (error) {
+      console.log("Error al actualizar el libro", error);
+      throw error;            
+    }
+  }
+)
+
 const bookSlice = createSlice({
   name: "books",
   initialState,
@@ -160,6 +180,16 @@ const bookSlice = createSlice({
       .addCase(deleteBook.rejected, (state, action) => {
         state.loading = "failed";
         state.error = action.error.message
+      })
+      .addCase(updateBook.pending, (state) => {
+        state.loading = "pending";
+      })
+      .addCase(updateBook.fulfilled, (state, action) => {
+        state.loading = "updated";
+      })
+      .addCase(updateBook.rejected, (state, action) => {
+        state.loading = "failed";
+        state.error = action.error.message;
       })
   },
 });

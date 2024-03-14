@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Favorite } from "../../redux/interfaces";
-import DeleteBook from "../createBooks/deleteBook";
+import DeleteBook from "../deleteBook/deleteBook";
 import HeartFavorite from "./heartFavorite";
 
 const FavoriteLabels = () => {
@@ -11,7 +11,7 @@ const FavoriteLabels = () => {
       {favorites.map((fav: Favorite) => (
         <div key={fav._id} className="border p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-bold">{fav.title}</h3>
+            <h3 className="uppercase text-sm font-bold">{fav.title}</h3>
             <DeleteBook bookId={fav._id} />
           </div>
 
