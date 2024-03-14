@@ -1,5 +1,5 @@
 import React from "react";
-import withLayout from "../components/ui/withLayout";
+// import withLayout from "../components/ui/withLayout";
 import { useEffect,  useState } from "react";
 import { fetchAllFavorites } from "../redux/bookSlice";
 import { useDispatch } from "react-redux";
@@ -49,4 +49,4 @@ const Favorites = () => {
     )
 }
 
-export default withLayout(Favorites);
+export default Favorites;

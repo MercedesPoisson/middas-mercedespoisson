@@ -3,12 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import "tailwindcss/tailwind.css"; 
 import Home from './views/home';
 import CreateBook from './views/createBook';
-import Favorites from './views/favorites';
-import ViewBooks from './views/viewBooks';
-// import NavBar from './components/ui/navBar';
 import DetailBook from './views/detailBook';
 import UpdateBook from './views/upDateBook';
 import Inicio from './views/inicio';
+import NoFav from './views/noFav';
 
 function App() {
   return (
@@ -17,11 +15,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route index element={<Inicio />} />
         <Route path="/crear" element={<CreateBook />} />
-        <Route path="/favoritos" element={<Favorites />} />
+        <Route path="/favoritos" element={<NoFav />} />
         <Route path="/libros/:id" element={<DetailBook />} />
         <Route path="/libro/:id" element={<UpdateBook />} />
-        <Route path="/verlibros" element={<ViewBooks />} />
-        {/* <Route path="/nav" element={<NavBar/>} /> */}
       </Routes>
     </div>
   );
