@@ -11,6 +11,7 @@ import { RootState } from "../redux/store";
 import { updateBook, fetchBookById, fetchAllBooks } from "../redux/bookSlice";
 import { UpdateBookInterface } from "../redux/interfaces";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 const UpdateBook = () => {
   const { id } = useParams();
@@ -74,7 +75,12 @@ const UpdateBook = () => {
         await dispatch(updateBook({ id, fields: updatedFields }) as any)
         dispatch(fetchAllBooks() as any)
         .then((result: any) => {
-          //manejo la actualizacion de estado
+          swal({
+            title: "¡Tu libro se actualizó correctamente",
+            icon: "success",
+          }).then(() => {
+            window.location.href = "/";
+          })
         })
         .catch((error: any) => {
           console.log("Error al intentar actualizar el libro", error);

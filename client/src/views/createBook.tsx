@@ -8,6 +8,7 @@ import Input from "../components/ui/input";
 import SelectGenre from "../components/createBooks/selectGenre";
 import InputNames from "../components/createBooks/inputNames";
 import { createBook } from "../redux/bookSlice";
+import swal from "sweetalert";
 
 const CreateBook = () => {
   const dispatch = useDispatch();
@@ -90,6 +91,10 @@ const CreateBook = () => {
             year: "",
             genre: ""
         })
+        swal({
+          title: "¡Tu libro se ha creado correctamente!",
+          icon: "success",
+        });
       })
       .catch((error: any) => {
         console.log("Error al crear el libro: ", error);
