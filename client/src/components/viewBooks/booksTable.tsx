@@ -2,10 +2,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Book } from "../../redux/interfaces";
 import HeartFavorite from "../favorites/heartFavorite";
-// import { FaEdit } from "react-icons/fa";
 import DeleteBook from "../deleteBook/deleteBook";
 import UpdateButton from "../updateBooks/updateButton";
-
 
 const BooksTable = () => {
   const books = useSelector((state: RootState) => state.book.books);
@@ -42,11 +40,12 @@ const BooksTable = () => {
                     bookId={book._id}
                   />
                 </td>
-                <td><UpdateButton bookId={book._id} /></td>
+                <td>
+                  <UpdateButton bookId={book._id} />
+                </td>
                 <td className="cursor-pointer ">
                   <DeleteBook bookId={book._id} />
                 </td>
-                
               </tr>
             );
           })}

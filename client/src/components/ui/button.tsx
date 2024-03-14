@@ -8,8 +8,8 @@ interface ButtonProps {
   children: ReactNode;
   icon?: "plus" | "arrow-back" | "check";
   to?: string;
-  type?: "button" | "submit",
-  onClick?: any
+  type?: "button" | "submit";
+  onClick?: any;
 }
 
 const Button = ({ children, icon, to, type, onClick }: ButtonProps) => {
@@ -38,8 +38,8 @@ const Button = ({ children, icon, to, type, onClick }: ButtonProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const buttonType = type || (icon === "arrow-back" ? "button" : "submit");
 
-  const clickHandler = onClick || (icon === "arrow-back" ? handleGoBack : undefined);
-
+  const clickHandler =
+    onClick || (icon === "arrow-back" ? handleGoBack : undefined);
 
   return (
     <Link

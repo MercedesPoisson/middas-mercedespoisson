@@ -1,6 +1,5 @@
 import React from "react";
-// import withLayout from "../components/ui/withLayout";
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllFavorites } from "../redux/bookSlice";
 import { useDispatch } from "react-redux";
 import Button from "../components/ui/button";
@@ -11,25 +10,22 @@ import { PiSquaresFour } from "react-icons/pi";
 import FavoriteLabels from "../components/favorites/favoritelabels";
 import FavoriteTable from "../components/favorites/favoriteTable";
 
-
 const Favorites = () => {
-    const [viewType, setViewType] = useState("table");
-    const dispatch = useDispatch();
+  const [viewType, setViewType] = useState("table");
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchAllFavorites() as any);
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchAllFavorites() as any);
+  }, [dispatch]);
 
-    return (
-        <div className="text-notblack font-poppins">
+  return (
+    <div className="text-notblack font-poppins">
       <Header>{"Listado de Libros Favoritos"}</Header>
       <Button icon="plus" to="/">
         {"Favoritear"}
       </Button>
       <Description>
-        {
-          "En esta sección vas a encontrar todos los libros favoriteados."
-        }
+        {"En esta sección vas a encontrar todos los libros favoriteados."}
       </Description>
       <div className="text-2xl text-notblack font-bold h-5 mb-2">
         <button onClick={() => setViewType("table")} className="mr-2">
@@ -46,7 +42,7 @@ const Favorites = () => {
         <FavoriteLabels />
       </div>
     </div>
-    )
-}
+  );
+};
 
 export default Favorites;

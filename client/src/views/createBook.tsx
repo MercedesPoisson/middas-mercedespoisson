@@ -81,7 +81,7 @@ const CreateBook = () => {
     if (!isFormValid) {
       return;
     }
-    // console.log("Nuevo libro a crear: ", newBook);
+
     dispatch(createBook(newBook) as any)
       .then((result: any) => {
         setNewBook({

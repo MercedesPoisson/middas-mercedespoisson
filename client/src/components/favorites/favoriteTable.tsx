@@ -1,13 +1,11 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Favorite } from "../../redux/interfaces";
-import DeleteBook from "../deleteBook/deleteBook";
 import HeartFavorite from "./heartFavorite";
 
-
 const FavoriteTable = () => {
-    const favorites = useSelector((state: RootState) => state.book.favorites);
-    
+  const favorites = useSelector((state: RootState) => state.book.favorites);
+
   return (
     <div className="rounded-sm mt-3 ">
       <table className="w-full text-notblack">
@@ -19,7 +17,6 @@ const FavoriteTable = () => {
             <th style={{ width: "10%" }}>Año</th>
             <th style={{ width: "15%" }}>Genero</th>
             <th style={{ width: "200%" }}>Favoritos</th>
-            {/* <th style={{ width: "10%" }}></th> */}
           </tr>
         </thead>
         <tbody>
@@ -34,11 +31,9 @@ const FavoriteTable = () => {
               <td>{fav.year}</td>
               <td>{fav.genre}</td>
               <td className="text-middasgreen text-xl flex justify-center items-center mt-2">
-              <HeartFavorite isFavorite={fav.isFavorite} bookId={fav._id} />
+                <HeartFavorite isFavorite={fav.isFavorite} bookId={fav._id} />
               </td>
-              <td className="text-xl text-middasdarkgreen cursor-pointer ">
-              {/* <DeleteBook bookId={fav._id} /> */}
-              </td>
+              <td className="text-xl text-middasdarkgreen cursor-pointer "></td>
             </tr>
           ))}
         </tbody>

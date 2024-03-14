@@ -1,9 +1,5 @@
 const Fotter = () => {
-    return(
-        <div>
-            soy footer
-        </div>
-    )
-}
+  return <div>soy footer</div>;
+};
 
-export default Fotter
+export default Fotter;

@@ -11,7 +11,7 @@ const Home = () => {
       <div className="w-full flex-none md:w-64">
         <NavBar />
       </div>
-      
+
       <div className="grow p-6 md:overflow-y-auto md:p-12">
         <Outlet />
       </div>

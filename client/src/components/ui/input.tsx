@@ -3,11 +3,16 @@ import React, { ChangeEvent } from "react";
 interface InputProps {
   placeholder: string;
   name: string;
-  value?: string; 
-  onChange?: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void; 
+  value?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, name, value, onChange }) => {
+const Input: React.FC<InputProps> = ({
+  placeholder,
+  name,
+  value,
+  onChange,
+}) => {
   return (
     <div>
       <input

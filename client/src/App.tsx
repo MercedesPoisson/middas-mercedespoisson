@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import "tailwindcss/tailwind.css"; 
-import Home from './views/home';
-import CreateBook from './views/createBook';
-import DetailBook from './views/detailBook';
-import UpdateBook from './views/upDateBook';
-import Inicio from './views/inicio';
-import NoFav from './views/noFav';
+import "tailwindcss/tailwind.css";
+import Home from "./views/home";
+import CreateBook from "./views/createBook";
+import DetailBook from "./views/detailBook";
+import UpdateBook from "./views/upDateBook";
+import Inicio from "./views/inicio";
+import NoFav from "./views/noFav";
 
 function App() {
   return (

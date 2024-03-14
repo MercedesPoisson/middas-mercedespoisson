@@ -72,15 +72,15 @@ const UpdateBook = () => {
       genre: updateBookData.genre,
     };
     if (id) {
-        await dispatch(updateBook({ id, fields: updatedFields }) as any)
-        dispatch(fetchAllBooks() as any)
+      await dispatch(updateBook({ id, fields: updatedFields }) as any);
+      dispatch(fetchAllBooks() as any)
         .then((result: any) => {
           swal({
             title: "¡Tu libro se actualizó correctamente",
             icon: "success",
           }).then(() => {
             window.location.href = "/";
-          })
+          });
         })
         .catch((error: any) => {
           console.log("Error al intentar actualizar el libro", error);
