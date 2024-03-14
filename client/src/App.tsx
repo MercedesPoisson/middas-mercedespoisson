@@ -5,21 +5,23 @@ import Home from './views/home';
 import CreateBook from './views/createBook';
 import Favorites from './views/favorites';
 import ViewBooks from './views/viewBooks';
-import NavBar from './components/ui/navBar';
+// import NavBar from './components/ui/navBar';
 import DetailBook from './views/detailBook';
 import UpdateBook from './views/upDateBook';
+import Inicio from './views/inicio';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route index element={<ViewBooks />} />
+        <Route index element={<Inicio />} />
         <Route path="/crear" element={<CreateBook />} />
         <Route path="/favoritos" element={<Favorites />} />
         <Route path="/libros/:id" element={<DetailBook />} />
         <Route path="/libro/:id" element={<UpdateBook />} />
-        <Route path="/nav" element={<NavBar/>} />
+        <Route path="/verlibros" element={<ViewBooks />} />
+        {/* <Route path="/nav" element={<NavBar/>} /> */}
       </Routes>
     </div>
   );

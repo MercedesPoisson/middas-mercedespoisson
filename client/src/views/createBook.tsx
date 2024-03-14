@@ -45,27 +45,26 @@ const CreateBook = () => {
     };
 
     if (!newBook.title) {
-        errors.title = "El título es requerido.";
+      errors.title = "El título es requerido.";
     } else if (newBook.title.length > 30) {
-        errors.title = "El título no puede exceder los 30 caracteres.";
+      errors.title = "El título no puede exceder los 30 caracteres.";
     }
 
     if (!newBook.author) {
-        errors.author = "El autor es requerido.";
+      errors.author = "El autor es requerido.";
     } else if (newBook.author.length > 20) {
       errors.author = "El autor no puede exceder los 20 caracteres.";
     }
     if (!/^\d{4}$/.test(newBook.year)) {
-        errors.year = "El año contiene 4 dígitos numericos.";
-      }
-  
-      if (!newBook.genre) {
-        errors.genre = "El género es requerido.";
-      }
+      errors.year = "El año contiene 4 dígitos numericos.";
+    }
 
-      setValidationErrors(errors);
+    if (!newBook.genre) {
+      errors.genre = "El género es requerido.";
+    }
 
-      return Object.values(errors).every((error) => !error);
+    setValidationErrors(errors);
+    return Object.values(errors).every((error) => !error);
   };
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -80,17 +79,17 @@ const CreateBook = () => {
     event.preventDefault();
     const isFormValid = validateForm();
     if (!isFormValid) {
-        return;
+      return;
     }
     // console.log("Nuevo libro a crear: ", newBook);
     dispatch(createBook(newBook) as any)
       .then((result: any) => {
         setNewBook({
-            title: "",
-            author: "",
-            year: "",
-            genre: ""
-        })
+          title: "",
+          author: "",
+          year: "",
+          genre: "",
+        });
         swal({
           title: "¡Tu libro se ha creado correctamente!",
           icon: "success",
@@ -121,7 +120,9 @@ const CreateBook = () => {
               onChange={handleInputChange}
             />
             {validationErrors.title && (
-              <span className="text-red-500 min-h-10">{validationErrors.title}</span>
+              <span className="text-red-500 min-h-10">
+                {validationErrors.title}
+              </span>
             )}
           </div>
           <div>
@@ -133,10 +134,12 @@ const CreateBook = () => {
               onChange={handleInputChange}
             />
             {validationErrors.author && (
-              <span className="text-red-500 min-h-5">{validationErrors.author}</span>
+              <span className="text-red-500 min-h-5">
+                {validationErrors.author}
+              </span>
             )}
           </div>
-          <div >
+          <div>
             <InputNames>{"Año de Publicación"}</InputNames>
             <Input
               placeholder={"ingresa el año en que se publicó"}
@@ -144,13 +147,19 @@ const CreateBook = () => {
               value={newBook.year}
               onChange={handleInputChange}
             />
-            {validationErrors.year && <span className="text-red-500 min-h-5">{validationErrors.year}</span>}
+            {validationErrors.year && (
+              <span className="text-red-500 min-h-5">
+                {validationErrors.year}
+              </span>
+            )}
           </div>
-          <div >
+          <div>
             <InputNames>{"Genero"}</InputNames>
             <SelectGenre value={newBook.genre} onChange={handleSelectChange} />
             {validationErrors.genre && (
-              <span className="text-red-500 min-h-5">{validationErrors.genre}</span>
+              <span className="text-red-500 min-h-5">
+                {validationErrors.genre}
+              </span>
             )}
           </div>
           <div className="mt-4">

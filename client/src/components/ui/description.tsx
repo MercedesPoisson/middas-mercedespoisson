@@ -7,7 +7,7 @@ interface DescriptionProp {
 const Description = ({ children }: DescriptionProp) => {
   return (
     <div>
-      <h1 className="text-sm md:text-base text-notblack-950 mb-4 mt-2">{children}</h1>
+      <h1 className="text-sm md:text-base text-notblack-950 mb-4 mt-2 font-poppins">{children}</h1>
     </div>
   );
 };

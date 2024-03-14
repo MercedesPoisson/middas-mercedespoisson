@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllBooks } from "../redux/bookSlice";
 import { useDispatch } from "react-redux";
-import withLayout from "../components/ui/withLayout";
+// import withLayout from "../components/ui/withLayout";
 import Button from "../components/ui/button";
 import Header from "../components/ui/header";
 import Description from "../components/ui/description";
@@ -48,4 +48,4 @@ const ViewBooks = () => {
   );
 };
 
-export default withLayout(ViewBooks);
+export default ViewBooks;
