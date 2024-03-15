@@ -4,7 +4,7 @@ import withLayout from "../components/ui/withLayout";
 import Description from "../components/ui/description";
 import Header from "../components/ui/header";
 import Button from "../components/ui/button";
-import { fetchAllBooks } from "../redux/bookSlice";
+import { fetchAllBooks, fetchAllFavorites } from "../redux/bookSlice";
 import { RootState } from "../redux/store";
 import Favorites from "./favorites";
 
@@ -15,6 +15,10 @@ const NoFav = () => {
   useEffect(() => {
     dispatch(fetchAllBooks() as any);
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAllFavorites() as any);
+  })
 
   return (
     <div>
