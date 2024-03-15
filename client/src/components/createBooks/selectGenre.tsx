@@ -34,7 +34,7 @@ const SelectGenre: React.FC<selectProps> = ({ value, onChange }) => {
         value={value}
         onChange={handleChange}
       >
-        <option value="" disabled selected hidden>
+        <option value="" disabled hidden>
           Selecciona un Género
         </option>
         {sortedGenres.map((genre, index) => (

@@ -42,9 +42,9 @@ const FavoriteLabels = () => {
             <p className="italic">{fav.author}</p>
             <p>Año: {fav.year}</p>
             <p>Género: {fav.genre}</p>
-            <p className="text-middasgreen text-xl">
+            <div className="text-middasgreen text-xl">
               <HeartFavorite isFavorite={fav.isFavorite} bookId={fav._id} />
-            </p>
+            </div>
           </div>
         ))}
       </div>
