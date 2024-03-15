@@ -4,9 +4,32 @@ import { Book } from "../../redux/interfaces";
 import HeartFavorite from "../favorites/heartFavorite";
 import DeleteBook from "../deleteBook/deleteBook";
 import UpdateButton from "../updateBooks/updateButton";
+import Pagination from "../ui/pagination";
+import { useState } from "react";
 
 const BooksTable = () => {
   const books = useSelector((state: RootState) => state.book.books);
+
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(books.length / itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const booksToShow = books.slice(startIndex, endIndex);
+
   return (
     <div className="rounded-sm mt-3 ">
       <table className="w-full text-notblack">
@@ -23,7 +46,7 @@ const BooksTable = () => {
           </tr>
         </thead>
         <tbody>
-          {books.map((book: Book, index: number) => {
+          {booksToShow.map((book: Book, index: number) => {
             return (
               <tr
                 key={book._id}
@@ -51,6 +74,12 @@ const BooksTable = () => {
           })}
         </tbody>
       </table>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onNextPage={handleNextPage}
+        onPrevPage={handlePrevPage}
+      />
     </div>
   );
 };

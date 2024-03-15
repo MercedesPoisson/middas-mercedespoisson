@@ -2,9 +2,31 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Favorite } from "../../redux/interfaces";
 import HeartFavorite from "./heartFavorite";
+import Pagination from "../ui/pagination";
+import { useState } from "react";
 
 const FavoriteTable = () => {
   const favorites = useSelector((state: RootState) => state.book.favorites);
+
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(favorites.length / itemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const booksToShow = favorites.slice(startIndex, endIndex);
 
   return (
     <div className="rounded-sm mt-3 ">
@@ -20,7 +42,7 @@ const FavoriteTable = () => {
           </tr>
         </thead>
         <tbody>
-          {favorites.map((fav: Favorite, index: number) => (
+          {booksToShow.map((fav: Favorite, index: number) => (
             <tr
               key={fav._id}
               className="h-10 border-b border-gray-200 hover:bg-middasgray "
@@ -38,6 +60,12 @@ const FavoriteTable = () => {
           ))}
         </tbody>
       </table>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onNextPage={handleNextPage}
+        onPrevPage={handlePrevPage}
+      />
     </div>
   );
 };
